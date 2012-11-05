@@ -11,7 +11,7 @@ public class Testnav extends Application {
 
 	@Secure
     public static void index(Long tmId, int itemIndex) {
-    	
+
         Testmap testmap = Testmap.findById(tmId);
         notFoundIfNull(testmap, "The Testmap with (Id="+tmId+") was not found.");
 
@@ -21,7 +21,7 @@ public class Testnav extends Application {
         } else if (itemIndex >= itemCount) {
         	notFound("Invalid Item Index.  No Items found.");
         }
-        
+        //commenting
         String testmapArrayString = "";
 		for (int i=0; i < itemCount; i++) {
 			if (i == 0) {
@@ -30,13 +30,13 @@ public class Testnav extends Application {
 				testmapArrayString += "," + testmap.testmapItems.get(i).item.id.toString();
 			}
 		}
-		testmapArrayString = "[" + testmapArrayString + "]"; 
-		
+		testmapArrayString = "[" + testmapArrayString + "]";
+		//Commenting
 		Long itemId = testmap.testmapItems.get(itemIndex).item.id;
 		Item item = Item.findById(itemId);
 		notFoundIfNull(item, "Unable to find requested Item with (Id="+itemId+").");
-		
-		ItemFlavor itemFlavor = item.getItemFlavorByFlavor(1);
+
+		ItemFlavor itemFlavor = item.getItemFlavorByFlavor(1);//Commenting
         render(testmap, testmapArrayString, itemIndex, item, itemFlavor);
     }
 
